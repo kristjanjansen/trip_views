@@ -927,31 +927,6 @@ function trip_views_views_default_views() {
   $handler->display->display_options['fields']['nid']['empty_zero'] = 0;
   $handler->display->display_options['fields']['nid']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['nid']['link_to_node'] = 0;
-  /* Field: Content: New comments */
-  $handler->display->display_options['fields']['new_comments']['id'] = 'new_comments';
-  $handler->display->display_options['fields']['new_comments']['table'] = 'node';
-  $handler->display->display_options['fields']['new_comments']['field'] = 'new_comments';
-  $handler->display->display_options['fields']['new_comments']['label'] = '';
-  $handler->display->display_options['fields']['new_comments']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['new_comments']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['new_comments']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['new_comments']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['new_comments']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['new_comments']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['new_comments']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['new_comments']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['new_comments']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['new_comments']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['new_comments']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['new_comments']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['new_comments']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['new_comments']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['new_comments']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['new_comments']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['new_comments']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['new_comments']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['new_comments']['format_plural'] = 0;
-  $handler->display->display_options['fields']['new_comments']['link_to_comment'] = 0;
   /* Sort criterion: Content: Updated/commented date */
   $handler->display->display_options['sorts']['last_updated']['id'] = 'last_updated';
   $handler->display->display_options['sorts']['last_updated']['table'] = 'node_comment_statistics';
