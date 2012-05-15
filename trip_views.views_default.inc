@@ -11,7 +11,7 @@
 function trip_views_views_default_views() {
   $views = array();
 
-  $view = new view();
+  $view = new view;
   $view->name = 'archive';
   $view->description = 'Display a list of months that link to content for that month.';
   $view->tag = 'default';
@@ -80,7 +80,7 @@ function trip_views_views_default_views() {
   $handler->display->display_options['arguments']['created_year_month']['specify_validation'] = TRUE;
   $views['archive'] = $view;
 
-  $view = new view();
+  $view = new view;
   $view->name = 'backlinks';
   $view->description = 'Displays a list of nodes that link to the node, using the search backlinks table.';
   $view->tag = 'default';
@@ -164,7 +164,7 @@ function trip_views_views_default_views() {
   $handler->display->display_options['arguments']['nid']['validate']['type'] = 'node';
   $views['backlinks'] = $view;
 
-  $view = new view();
+  $view = new view;
   $view->name = 'comments_recent';
   $view->description = 'Contains a block and a page to list recent comments; the block will automatically link to the page, which displays the comment body as well as a link to the node.';
   $view->tag = 'default';
@@ -256,7 +256,7 @@ function trip_views_views_default_views() {
   $handler = $view->new_display('block', 'Block', 'block');
   $views['comments_recent'] = $view;
 
-  $view = new view();
+  $view = new view;
   $view->name = 'frontpage';
   $view->description = 'Emulates the default Drupal front page; you may set the default home page path to this view to make it your front page.';
   $view->tag = 'default';
@@ -320,7 +320,7 @@ function trip_views_views_default_views() {
   $handler->display->display_options['sitename_title'] = '1';
   $views['frontpage'] = $view;
 
-  $view = new view();
+  $view = new view;
   $view->name = 'glossary';
   $view->description = 'A list of all content, by letter.';
   $view->tag = 'default';
@@ -427,7 +427,7 @@ function trip_views_views_default_views() {
   $handler->display->display_options['inherit_arguments'] = FALSE;
   $views['glossary'] = $view;
 
-  $view = new view();
+  $view = new view;
   $view->name = 'taxonomy_term';
   $view->description = 'A view to emulate Drupal core\'s handling of taxonomy/term.';
   $view->tag = 'default';
@@ -503,7 +503,7 @@ function trip_views_views_default_views() {
   );
   $views['taxonomy_term'] = $view;
 
-  $view = new view();
+  $view = new view;
   $view->name = 'tracker';
   $view->description = 'Shows all new activity on system.';
   $view->tag = 'default';
@@ -633,74 +633,132 @@ function trip_views_views_default_views() {
   $handler->display->display_options['menu']['title'] = 'Recent posts';
   $views['tracker'] = $view;
 
-  $view = new view();
-  $view->name = 'trip_json';
+  $view = new view;
+  $view->name = 'trip_images';
   $view->description = '';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'trip_json';
+  $view->human_name = 'trip_images';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Images';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
-  $handler->display->display_options['style_plugin'] = 'views_json';
-  $handler->display->display_options['style_options']['field_output'] = 'raw';
-  $handler->display->display_options['style_options']['plaintext_output'] = 1;
-  $handler->display->display_options['style_options']['jsonp_prefix'] = '';
-  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '360';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all'] = 0;
+  $handler->display->display_options['style_plugin'] = 'grid';
+  $handler->display->display_options['row_plugin'] = 'fields';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: New comments */
-  $handler->display->display_options['fields']['new_comments']['id'] = 'new_comments';
-  $handler->display->display_options['fields']['new_comments']['table'] = 'node';
-  $handler->display->display_options['fields']['new_comments']['field'] = 'new_comments';
-  $handler->display->display_options['fields']['new_comments']['label'] = '';
-  $handler->display->display_options['fields']['new_comments']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['new_comments']['empty'] = '0';
-  $handler->display->display_options['fields']['new_comments']['empty_zero'] = TRUE;
-  $handler->display->display_options['fields']['new_comments']['link_to_comment'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['title']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['title']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['title']['link_to_node'] = 1;
+  /* Field: Content: image_image */
+  $handler->display->display_options['fields']['field_image_image']['id'] = 'field_image_image';
+  $handler->display->display_options['fields']['field_image_image']['table'] = 'field_data_field_image_image';
+  $handler->display->display_options['fields']['field_image_image']['field'] = 'field_image_image';
+  $handler->display->display_options['fields']['field_image_image']['label'] = '';
+  $handler->display->display_options['fields']['field_image_image']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_image_image']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_image_image']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_image_image']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_image_image']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_image_image']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_image_image']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_image_image']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_image_image']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_image_image']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['field_image_image']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_image_image']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_image_image']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_image_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_image_image']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_image_image']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_image_image']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_image_image']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_image_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_image_image']['settings'] = array(
+    'image_style' => 'thumbnail',
+    'image_link' => 'content',
+  );
+  $handler->display->display_options['fields']['field_image_image']['field_api_classes'] = 0;
   /* Field: Content: Comment count */
   $handler->display->display_options['fields']['comment_count']['id'] = 'comment_count';
   $handler->display->display_options['fields']['comment_count']['table'] = 'node_comment_statistics';
   $handler->display->display_options['fields']['comment_count']['field'] = 'comment_count';
   $handler->display->display_options['fields']['comment_count']['label'] = '';
+  $handler->display->display_options['fields']['comment_count']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['comment_count']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['comment_count']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['comment_count']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['comment_count']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['comment_count']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['comment_count']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['comment_count']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['comment_count']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['comment_count']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['comment_count']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['comment_count']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['comment_count']['alter']['html'] = 0;
   $handler->display->display_options['fields']['comment_count']['element_label_colon'] = FALSE;
-  /* Contextual filter: Content: Nid */
-  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
-  $handler->display->display_options['arguments']['nid']['table'] = 'node';
-  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
-  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['fields']['comment_count']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['comment_count']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['comment_count']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['comment_count']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['comment_count']['format_plural'] = 0;
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['value'] = '1';
   $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  $handler->display->display_options['filters']['status']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['status']['expose']['operator_id'] = '';
+  $handler->display->display_options['filters']['status']['expose']['label'] = 'Published';
+  $handler->display->display_options['filters']['status']['expose']['use_operator'] = FALSE;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = 'status_op';
+  $handler->display->display_options['filters']['status']['expose']['identifier'] = 'status';
+  $handler->display->display_options['filters']['status']['expose']['multiple'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'image' => 'image',
+  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'json/%';
-  $views['trip_json'] = $view;
+  $handler->display->display_options['path'] = 'images';
+  $views['trip_images'] = $view;
 
-  $view = new view();
+  $view = new view;
   $view->name = 'trip_test';
   $view->description = '';
   $view->tag = 'default';
@@ -714,7 +772,9 @@ function trip_views_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Test';
   $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'time';
+  $handler->display->display_options['cache']['results_lifespan'] = '518400';
+  $handler->display->display_options['cache']['output_lifespan'] = '518400';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -722,7 +782,6 @@ function trip_views_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '35';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
-  $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['style_plugin'] = 'table';
   /* Relationship: Content: Author */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
@@ -814,9 +873,71 @@ function trip_views_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'test';
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page_1');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'views_json';
+  $handler->display->display_options['style_options']['plaintext_output'] = 1;
+  $handler->display->display_options['style_options']['jsonp_prefix'] = '';
+  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['nid']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['nid']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nid']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['nid']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['nid']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['nid']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['nid']['link_to_node'] = 0;
+  /* Field: Content: New comments */
+  $handler->display->display_options['fields']['new_comments']['id'] = 'new_comments';
+  $handler->display->display_options['fields']['new_comments']['table'] = 'node';
+  $handler->display->display_options['fields']['new_comments']['field'] = 'new_comments';
+  $handler->display->display_options['fields']['new_comments']['label'] = '';
+  $handler->display->display_options['fields']['new_comments']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['new_comments']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['new_comments']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['new_comments']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['new_comments']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['new_comments']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['new_comments']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['new_comments']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['new_comments']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['new_comments']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['new_comments']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['new_comments']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['new_comments']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['new_comments']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['new_comments']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['new_comments']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['new_comments']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['new_comments']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['new_comments']['format_plural'] = 0;
+  $handler->display->display_options['fields']['new_comments']['link_to_comment'] = 1;
+  $handler->display->display_options['path'] = 'json';
   $views['trip_test'] = $view;
 
-  $view = new view();
+  $view = new view;
   $view->name = 'trip_users';
   $view->description = '';
   $view->tag = 'default';
@@ -833,6 +954,7 @@ function trip_views_views_default_views() {
   $handler->display->display_options['access']['perm'] = 'access user profiles';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '100';
