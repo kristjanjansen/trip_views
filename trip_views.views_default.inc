@@ -674,7 +674,7 @@ function trip_views_views_default_views() {
   $handler->display->display_options['fields']['title']['hide_empty'] = 0;
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title']['link_to_node'] = 1;
-  /* Field: Content: image_image */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_image_image']['id'] = 'field_image_image';
   $handler->display->display_options['fields']['field_image_image']['table'] = 'field_data_field_image_image';
   $handler->display->display_options['fields']['field_image_image']['field'] = 'field_image_image';
@@ -697,12 +697,6 @@ function trip_views_views_default_views() {
   $handler->display->display_options['fields']['field_image_image']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_image_image']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_image_image']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_image_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_image_image']['settings'] = array(
-    'image_style' => 'thumbnail',
-    'image_link' => 'content',
-  );
-  $handler->display->display_options['fields']['field_image_image']['field_api_classes'] = 0;
   /* Field: Content: Comment count */
   $handler->display->display_options['fields']['comment_count']['id'] = 'comment_count';
   $handler->display->display_options['fields']['comment_count']['table'] = 'node_comment_statistics';
