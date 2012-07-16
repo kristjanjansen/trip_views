@@ -779,11 +779,6 @@ function trip_views_views_default_views() {
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
   $handler->display->display_options['relationships']['uid']['table'] = 'node';
   $handler->display->display_options['relationships']['uid']['field'] = 'uid';
-  /* Relationship: trip_utils_touch table: trip_utils_touch nid */
-  $handler->display->display_options['relationships']['nid']['id'] = 'nid';
-  $handler->display->display_options['relationships']['nid']['table'] = 'trip_utils_touch';
-  $handler->display->display_options['relationships']['nid']['field'] = 'nid';
-  $handler->display->display_options['relationships']['nid']['required'] = 0;
   /* Field: User: field_user_image */
   $handler->display->display_options['fields']['field_user_image']['id'] = 'field_user_image';
   $handler->display->display_options['fields']['field_user_image']['table'] = 'field_data_field_user_image';
@@ -847,31 +842,6 @@ function trip_views_views_default_views() {
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
   $handler->display->display_options['fields']['nid']['label'] = '';
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
-  /* Field: trip_utils_touch table: trip_utils_touch touch */
-  $handler->display->display_options['fields']['touch']['id'] = 'touch';
-  $handler->display->display_options['fields']['touch']['table'] = 'trip_utils_touch';
-  $handler->display->display_options['fields']['touch']['field'] = 'touch';
-  $handler->display->display_options['fields']['touch']['label'] = '';
-  $handler->display->display_options['fields']['touch']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['touch']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['touch']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['touch']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['touch']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['touch']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['touch']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['touch']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['touch']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['touch']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['touch']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['touch']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['touch']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['touch']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['touch']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['touch']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['touch']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['touch']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['touch']['date_format'] = 'custom';
-  $handler->display->display_options['fields']['touch']['custom_date_format'] = 'j. M H:i';
   /* Sort criterion: Content: Updated/commented date */
   $handler->display->display_options['sorts']['last_updated']['id'] = 'last_updated';
   $handler->display->display_options['sorts']['last_updated']['table'] = 'node_comment_statistics';
@@ -950,6 +920,109 @@ function trip_views_views_default_views() {
   $handler->display->display_options['fields']['new_comments']['format_plural'] = 0;
   $handler->display->display_options['fields']['new_comments']['link_to_comment'] = 1;
   $handler->display->display_options['path'] = 'json';
+
+  /* Display: Page 2 */
+  $handler = $view->new_display('page', 'Page 2', 'page_2');
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Content: Author */
+  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['table'] = 'node';
+  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
+  /* Relationship: trip_utils_touch table: trip_utils_touch nid */
+  $handler->display->display_options['relationships']['nid']['id'] = 'nid';
+  $handler->display->display_options['relationships']['nid']['table'] = 'trip_utils_touch';
+  $handler->display->display_options['relationships']['nid']['field'] = 'nid';
+  $handler->display->display_options['relationships']['nid']['required'] = 0;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: User: field_user_image */
+  $handler->display->display_options['fields']['field_user_image']['id'] = 'field_user_image';
+  $handler->display->display_options['fields']['field_user_image']['table'] = 'field_data_field_user_image';
+  $handler->display->display_options['fields']['field_user_image']['field'] = 'field_user_image';
+  $handler->display->display_options['fields']['field_user_image']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['field_user_image']['label'] = '';
+  $handler->display->display_options['fields']['field_user_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_user_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_user_image']['settings'] = array(
+    'image_style' => 'thumbnail',
+    'image_link' => '',
+  );
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Comment count */
+  $handler->display->display_options['fields']['comment_count']['id'] = 'comment_count';
+  $handler->display->display_options['fields']['comment_count']['table'] = 'node_comment_statistics';
+  $handler->display->display_options['fields']['comment_count']['field'] = 'comment_count';
+  $handler->display->display_options['fields']['comment_count']['label'] = '';
+  $handler->display->display_options['fields']['comment_count']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['comment_count']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['comment_count']['empty_zero'] = TRUE;
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  /* Field: Content: Tags */
+  $handler->display->display_options['fields']['field_tags']['id'] = 'field_tags';
+  $handler->display->display_options['fields']['field_tags']['table'] = 'field_data_field_tags';
+  $handler->display->display_options['fields']['field_tags']['field'] = 'field_tags';
+  $handler->display->display_options['fields']['field_tags']['label'] = '';
+  $handler->display->display_options['fields']['field_tags']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_tags']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_tags']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_tags']['separator'] = '<br />';
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: trip_utils_touch table: trip_utils_touch touch */
+  $handler->display->display_options['fields']['touch']['id'] = 'touch';
+  $handler->display->display_options['fields']['touch']['table'] = 'trip_utils_touch';
+  $handler->display->display_options['fields']['touch']['field'] = 'touch';
+  $handler->display->display_options['fields']['touch']['relationship'] = 'nid';
+  $handler->display->display_options['fields']['touch']['label'] = '';
+  $handler->display->display_options['fields']['touch']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['touch']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['touch']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['touch']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['touch']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['touch']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['touch']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['touch']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['touch']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['touch']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['touch']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['touch']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['touch']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['touch']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['touch']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['touch']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['touch']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['touch']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['touch']['date_format'] = 'custom';
+  $handler->display->display_options['fields']['touch']['custom_date_format'] = 'j. M H:i';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: trip_utils_touch table: trip_utils_touch touch */
+  $handler->display->display_options['sorts']['touch']['id'] = 'touch';
+  $handler->display->display_options['sorts']['touch']['table'] = 'trip_utils_touch';
+  $handler->display->display_options['sorts']['touch']['field'] = 'touch';
+  $handler->display->display_options['sorts']['touch']['relationship'] = 'nid';
+  $handler->display->display_options['sorts']['touch']['order'] = 'DESC';
+  $handler->display->display_options['path'] = 'test2';
   $views['trip_test'] = $view;
 
   $view = new view;
