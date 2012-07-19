@@ -775,6 +775,80 @@ function trip_views_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_user_image' => 'field_user_image',
+    'title' => 'title',
+    'name' => 'title',
+    'comment_count' => 'comment_count',
+    'nothing' => 'nothing',
+    'field_tags' => 'field_tags',
+    'last_updated' => 'title',
+    'nid' => 'nid',
+    'term_node_tid' => 'title',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'field_user_image' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'title' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => ' ',
+      'empty_column' => 0,
+    ),
+    'name' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'comment_count' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'nothing' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_tags' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'last_updated' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'nid' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'term_node_tid' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['style_options']['override'] = 1;
+  $handler->display->display_options['style_options']['sticky'] = 0;
+  $handler->display->display_options['style_options']['empty_table'] = 0;
   /* Relationship: Content: Author */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
   $handler->display->display_options['relationships']['uid']['table'] = 'node';
@@ -791,6 +865,31 @@ function trip_views_views_default_views() {
     'image_style' => 'thumbnail',
     'image_link' => '',
   );
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['title']['element_type'] = 'h3';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['title']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['title']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['title']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['title']['link_to_node'] = 1;
   /* Field: User: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'users';
@@ -798,13 +897,6 @@ function trip_views_views_default_views() {
   $handler->display->display_options['fields']['name']['relationship'] = 'uid';
   $handler->display->display_options['fields']['name']['label'] = '';
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   /* Field: Content: Comment count */
   $handler->display->display_options['fields']['comment_count']['id'] = 'comment_count';
   $handler->display->display_options['fields']['comment_count']['table'] = 'node_comment_statistics';
@@ -842,6 +934,35 @@ function trip_views_views_default_views() {
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
   $handler->display->display_options['fields']['nid']['label'] = '';
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Content: All taxonomy terms */
+  $handler->display->display_options['fields']['term_node_tid']['id'] = 'term_node_tid';
+  $handler->display->display_options['fields']['term_node_tid']['table'] = 'node';
+  $handler->display->display_options['fields']['term_node_tid']['field'] = 'term_node_tid';
+  $handler->display->display_options['fields']['term_node_tid']['label'] = '';
+  $handler->display->display_options['fields']['term_node_tid']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['term_node_tid']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['term_node_tid']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['term_node_tid']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['term_node_tid']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['term_node_tid']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['term_node_tid']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['term_node_tid']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['term_node_tid']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['term_node_tid']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['term_node_tid']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['term_node_tid']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['term_node_tid']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['term_node_tid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['term_node_tid']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['term_node_tid']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['term_node_tid']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['term_node_tid']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['term_node_tid']['link_to_taxonomy'] = 1;
+  $handler->display->display_options['fields']['term_node_tid']['limit'] = 0;
+  $handler->display->display_options['fields']['term_node_tid']['vocabularies'] = array(
+    'destination' => 0,
+    'tags' => 0,
+  );
   /* Sort criterion: Content: Trip last comment date */
   $handler->display->display_options['sorts']['trip_last_comment']['id'] = 'trip_last_comment';
   $handler->display->display_options['sorts']['trip_last_comment']['table'] = 'node';
